@@ -33,6 +33,15 @@ public class BulletinService {
         return bulletinRepository.findById(bulletinId);
     }
 
+    //게시글 업데이트
+    @Transactional
+    public Bulletin updateBulletin(Long bulletinId, String title, String text){
+        Bulletin bulletin = bulletinRepository.findById(bulletinId);
+        bulletin.update(title, text);
+
+        return bulletin;
+    }
+
     //삭제
     @Transactional
     public void deleteOne(Long bulletinId){
