@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController //controller + responsebody
 @RequiredArgsConstructor
 public class BulletinApiController {
 
@@ -16,8 +16,8 @@ public class BulletinApiController {
     @PostMapping("/bulletins")
     public Bulletin saveBulletin(@RequestBody Bulletin bul){
         Bulletin bulletin = new Bulletin();
-        bulletin.setText(bul.getTitle());
-        bulletin.setTitle(bul.getText());
+        bulletin.setTitle(bul.getTitle());
+        bulletin.setText(bul.getText());
         bulletinService.write(bulletin);
         return bulletin;
     }
@@ -44,9 +44,5 @@ public class BulletinApiController {
     public void deleteBulletin(@PathVariable Long bulletinId){
         bulletinService.deleteOne(bulletinId);
     }
-
-
-
-
 
 }
